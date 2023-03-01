@@ -1,0 +1,13 @@
+name: CI Test with ARC
+on: push
+jobs:
+  job1:
+    runs-on: ["arc"]
+    strategy:
+      matrix: 
+        runner: ['runner1', 'runner2', 'runner3','runner4','runner5']
+        greeting: ['good-morning', 'good-afternoon', 'good-evening']
+    steps:
+    - run: echo ${{ matrix.greeting}}-${{ matrix.runner }}
+    - run: date
+    - run: sleep 5 # Sleep so that we can see a difference in timestamp on the last run
